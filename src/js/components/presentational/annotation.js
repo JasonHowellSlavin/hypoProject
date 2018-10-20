@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-const Input = ({ label, text, type, id, value, handleChange }) => (
+const Annotation = ({ label, text, type, id, value, handleChange }) => (
     <div className="form-group">
         <label htmlFor={label}>{text}</label>
         <input
@@ -13,7 +13,7 @@ const Input = ({ label, text, type, id, value, handleChange }) => (
         />
     </div>
 );
-Input.propTypes = {
+Annotation.propTypes = {
     label: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
@@ -22,4 +22,4 @@ Input.propTypes = {
     handleChange: PropTypes.func.isRequired
 };
 
-export default Input;
+export default Annotation;

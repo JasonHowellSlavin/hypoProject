@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Input from "../presentational/Input";
+import Annotation from "../presentational/annotation";
 import axios from 'axios';
 // import urls from './src/api/urls.js';
 
-class FormContainer extends Component {
+class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,7 +21,7 @@ class FormContainer extends Component {
             method: 'get',
             params: {
                 url: 'http://teaching.lfhanley.net/english528sp18/texts/edna-st-vincent-millay/',
-                user: 'lydiajen@hypothes.is',
+                // user: 'lydiajen@hypothes.is',
                 limit: 200,
                 password: 'Basic 6879-UpkRG4InzmDMO5jsOyMDvMTFltIlCHNLG-j6gpex2Ok',
             },
@@ -60,4 +60,4 @@ class FormContainer extends Component {
 
 const wrapper = document.getElementById("create-article-form");
 
-ReactDOM.render(<FormContainer />, wrapper);
+ReactDOM.render(<Dashboard />, wrapper);
