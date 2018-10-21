@@ -1,25 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-const Annotation = ({ label, text, type, id, value, handleChange }) => (
-    <div className="form-group">
-        <label htmlFor={label}>{text}</label>
-        <input
-            type={type}
-            className="form-control"
-            id={id}
-            value={value}
-            onChange={handleChange}
-            required
-        />
+import "../../../scss/annotation.scss";
+
+const Annotation = (props) => (
+    <div className={props.classFromProps}>
+        <h3>User: {props.userName ? props.userName : "user name"}</h3>
+        <h4>Created: {props.createdAt ? props.createdAt : "created at"}</h4>
+        <p>Annotation: {props.userAnnotation ? props.userAnnotation : "user annotation"}</p>
+        <p>Target text: {props.targetText ? props.targetText : "target text"}</p>
     </div>
 );
-Annotation.propTypes = {
-    label: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
-};
 
 export default Annotation;

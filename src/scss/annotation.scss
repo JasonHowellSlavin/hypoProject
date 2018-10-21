@@ -1,0 +1,30 @@
+@import 'mixins';
+@import 'typography';
+
+.annotation {
+    @include flexbox(column, flex-start, flex-start);
+    background-color: #e9e9e9;
+    margin: 10px;
+    width: 95%;
+
+
+    h3 {
+        background-color: #d9d9d9;
+        margin: 5px;
+
+    }
+
+    h4 {
+        background-color: #d9d9d9;
+        margin: 5px;
+    }
+
+    p {
+        background-color: #d9d9d9;
+        margin: 5px;
+    }
+}
+
+.reply-to-text {
+    background-color: red;
+}

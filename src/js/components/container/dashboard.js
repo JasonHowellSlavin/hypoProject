@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Annotation from "../presentational/annotation";
+import AnnotationBrowser from "../presentational/annotation-browser";
 import axios from 'axios';
+import "../../../scss/dashboard.scss";
 // import urls from './src/api/urls.js';
 
 class Dashboard extends Component {
@@ -10,9 +11,25 @@ class Dashboard extends Component {
         this.state = {
             textTile: "Some Text Goes Here",
             data: [],
+            users: [],
         };
 
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    createUserList (data) {
+        let userArr = data.reduce((accum, elem) => {
+            accum.push(elem.user);
+            return accum;
+        }, []);
+
+        console.log(userArr);
+
+
+        let seen = {};
+        return userArr.filter(function(item) {
+            return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+        });
     }
 
     componentDidMount () {
@@ -27,7 +44,10 @@ class Dashboard extends Component {
             },
         }).then((response) => {
             console.log(response);
-            this.setState({data: response.data.rows});
+            this.setState({
+                data: response.data.rows,
+                users: this.createUserList(response.data.rows),
+            });
             console.log(this.state);
         }).catch((error) => {
             console.log('error', error);
@@ -40,24 +60,21 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'main-dashboard-wrapper'}>
                 <p>{this.state.textTile}</p>
-                <div className={'student-post-container'}>
-                {
-                    this.state.data.map((elem) => {
-                        return <div key={elem.id} className={'student-post'}>
-                            <h2>User: {elem.user}</h2>
-                            <h3>Created: {elem.created}</h3>
-                            <p>Annotation: {elem.text}</p>
-                        </div>;
-                    })
-                }
+                <section className={'user-input-area'}></section>
+                <div className={'dashboard-widget-wrapper'}>
+                    <AnnotationBrowser data={this.state.data}/>
+                    <div className={'graphics-wrapper'}>
+                        <section className={'bar-graph-box'}></section>
+                        <section className={'hot-spots'}></section>
+                    </div>
                </div>
             </div>
         );
     }
 }
 
-const wrapper = document.getElementById("create-article-form");
+const wrapper = document.getElementById("hypothesis-dashboard");
 
 ReactDOM.render(<Dashboard />, wrapper);

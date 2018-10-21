@@ -1,0 +1,8 @@
+@import 'typography';
+
+.annotation-browser {
+    width: 45%;
+    border: 2px dashed mediumpurple;
+    overflow-y: scroll;
+    max-height: 90vh;
+}
