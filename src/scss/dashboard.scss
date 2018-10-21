@@ -1,0 +1,51 @@
+@import 'mixins';
+@import 'typography';
+
+.container {
+    display: flex;
+    width: 100%;
+    border: 2px dashed blue;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-dashboard-wrapper {
+    @include flexbox(column);
+}
+
+.dashboard-widget-wrapper {
+    @include flexbox(row, flex-start, flex-start, wrap);
+    width: 100%;
+
+    .graphics-wrapper {
+        @include flexbox(column, flex-start, flex-start)
+        width: 49%;
+    }
+}
+
+#hypothesis-dashboard {
+    min-width: 200px;
+    width: 100%;
+    min-height: 200px;
+}
+
+.student-post-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.bar-graph-box {
+    width: 50%;
+    height: 400px;
+    border: 1px solid darkslategrey;
+}
+
+.hot-spots {
+    width: 50%;
+    height: 400px;
+    border: 1px solid forestgreen;
+
+}
