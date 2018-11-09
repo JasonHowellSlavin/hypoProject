@@ -47,5 +47,16 @@
     width: 50%;
     height: 400px;
     border: 1px solid forestgreen;
+}
 
+.user-input-area {
+    @include flexbox(column);
+    padding: 20px;
+    margin: 5px;
+
+    button {
+        padding: 5px;
+        margin: 5px;
+        background-color: mediumpurple;
+    }
 }
